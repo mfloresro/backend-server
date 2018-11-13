@@ -21,7 +21,7 @@ var Usuario = require('../models/usuario');
 app.get('/', (req, res, next) => {
     var desde = req.query.desde || 0;
     desde = Number(desde);
-    Usuario.find({}, 'nombre email img role')
+    Usuario.find({}, 'nombre email img role google')
         .skip(desde)
         .limit(5)
         .exec((err, usuarios) => {
@@ -97,8 +97,9 @@ app.put('/:id', mdAutentificacion.verificaToken, (req, res) => {
 //=====================================================================================
 // Crear usuario
 //===================================================================================== 
-
-app.post('/', mdAutentificacion.verificaToken, (req, res) => {
+// Se comento para que cualquier usuario pueda darse de alta 
+//app.post('/', mdAutentificacion.verificaToken, (req, res) => {
+app.post('/', (req, res) => {
     var body = req.body;
 
     var usuario = new Usuario({

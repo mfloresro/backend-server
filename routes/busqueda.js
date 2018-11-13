@@ -14,10 +14,10 @@ app.get('/coleccion/:tabla/:busqueda', (req, res) => {
     var tabla = req.params.tabla;
     var regex = new RegExp(busqueda, 'i');
     var promesa;
-
+    // console.log(tabla)
     switch (tabla) {
 
-        case 'usaurios':
+        case 'usuarios':
             promesa = buscarUsuarios(busqueda, regex);
             break;
 
